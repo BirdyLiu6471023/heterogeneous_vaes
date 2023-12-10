@@ -28,7 +28,8 @@ allowed_datasets = {
     'movies': DatasetOptions(True, True, True),
     'HI': DatasetOptions(True, False, True),
     'rwm5yr': DatasetOptions(True, False, True),
-    'labour': DatasetOptions(True, False, True)
+    'labour': DatasetOptions(True, False, True),
+    'nhefs':DatasetOptions(True, False, False)
 }
 
 
@@ -41,7 +42,7 @@ def read_data_file(file_path: str, categoricals: Sequence[int], prob_model, with
     if with_header:
         df = pd.read_csv(file_path, index_col=0)
     else:
-        df = pd.read_csv(file_path, ',', header=None)
+        df = pd.read_csv(file_path, sep=',', header=None)
 
     for i in categoricals:
         df.iloc[:, i] -= df.iloc[:, i].min()
@@ -66,7 +67,7 @@ def read_data_file(file_path: str, categoricals: Sequence[int], prob_model, with
 
 
 def read_mask_file(file_path: str, n_rows: int, n_cols: int) -> torch.Tensor:
-    df = pd.read_csv(file_path, ',', names=['row', 'col'], header=None)
+    df = pd.read_csv(file_path, sep = ',', names=['row', 'col'], header=None)
     df -= 1
     df = df.groupby('row')['col'].apply(list)
 

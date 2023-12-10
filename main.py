@@ -51,7 +51,7 @@ def validate(args) -> None:
             'Wine': 2000, 'letter': 400, 'spam': 2000,
             'Adult': 400, 'defaultCredit': 400, 'Breast': 3000,
             'labour': 400, 'HI': 400, 'diamonds': 400, 'CPS1988': 400,
-            'rwm5yr': 400, 'movies': 400, 'bank': 400
+            'rwm5yr': 400, 'movies': 400, 'bank': 400, 'nhefs':100
         }[args.dataset[args.dataset.rindex('/')+1:]]
 
 
